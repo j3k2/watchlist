@@ -6,9 +6,16 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body ng-app="watchlist" ng-controller="MainCtrl">
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<a class="navbar-brand">WATCHLIST</a>
+		</div>
+	</nav>
+	<div class="container-fluid">
 
 <%= yield %>
+	</div>
 
 </body>
 </html>
