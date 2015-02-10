@@ -1,0 +1,8 @@
+{{user.username}}
+
+<div ng-repeat="list in user.lists">
+	{{list.id}} -- {{list.category}}
+	<div ng-repeat="show in list.shows">
+		{{show.id}}
+	</div>
+</div>

@@ -17,17 +17,33 @@
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 
 body {
-	font-family: 'Verdana', sans-serif;
+	font-family: 'Helvetica', sans-serif;
+	background:tan;
+}
+a{
+	color:black;
 }
 .navbar{
-	background: lightgrey;
+	background: wheat;
+	border:0px;
 	border-radius:0px;
+	height:80px;
+}
+.navbar-brand{
+	padding:0px;
+}
+.nav-pills{
+	float:right;
+}
+.logo{
+	height:80px;
 }
 .thumbnail{
 	width:150px;
 	margin-left:auto;
 	margin-right:auto;	
 	padding:0px;
+	border:none;
 }
 
 .detail{

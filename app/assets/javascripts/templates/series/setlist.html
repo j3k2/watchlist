@@ -1,0 +1,10 @@
+<div class="btn-group" dropdown>
+      <button type="button" class="btn btn-danger" ng-init="init()">{{currentList.category || 'Add to list'}}</button>
+      <button type="button" class="btn btn-danger dropdown-toggle" dropdown-toggle>
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+				<!-- <li><a ng-click"setList(show, null)">Delete</a></li> -->
+        <li ng-repeat="list in currentUser.lists"><a ng-click="setList(show, list)">{{list.category}}</a></li>
+      </ul>
+    </div>

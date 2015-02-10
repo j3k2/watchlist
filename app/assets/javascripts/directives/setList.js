@@ -1,0 +1,46 @@
+angular.module('watchlist.directives', ['templates', 'watchlist.services'])
+	.directive("setList", function(){
+		return {
+			restrict: 'E',
+			scope: {
+				show: "=",
+			},
+			templateUrl:'series/setlist.html', 
+			controller: function($scope, usersFactory, seriesFactory){
+				$scope.currentUser = usersFactory.getUser(1);
+				$scope.init = function(){
+					$scope.currentUser.lists.forEach(function(listItem){
+						listItem.shows.forEach(function(show){
+							if(show.id == $scope.show.id){
+								$scope.currentList = this;
+							}
+						}.bind(listItem));
+					});
+				}
+
+								
+				$scope.setList = function(show, list){					
+					$scope.showId = show.id;
+					$scope.currentList = list;
+					
+					//delete show from other lists' shows					
+					$scope.currentUser.lists.forEach(function(listItem){
+						listItem.shows.forEach(function(show){
+							if(show.id == $scope.showId){
+								
+								var idx = this.shows.indexOf(show);
+								this.shows.splice(idx, 1);
+							}
+						}.bind(listItem));
+					});
+
+					
+					//adds show to list's shows	
+					list.shows.push(show);
+					
+				};
+				
+			}
+		};
+		
+	});
