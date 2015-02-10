@@ -14,7 +14,7 @@ watchlist.config(function($stateProvider, $urlRouterProvider) {
 		})
 		.state('seriesShow', {
 			url:'/series/:id',
-			templateUrl: 'series/show.html',
+			templateUrl: 'series/detail.html',
 			controller: function($scope, $stateParams, seriesFactory){
 				var seriesId = $stateParams.id;
 				// $scope.seriesId = seriesId;
