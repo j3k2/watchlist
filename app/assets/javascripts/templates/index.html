@@ -1,0 +1,24 @@
+<div class="col-md-10">
+<h1>Featured shows</h1>
+<br>
+<div ng-repeat="show in shows">
+	<!-- <div class="row show-item">
+		<div class="show-item-left">
+			<img src="{{show.imgUrl}}" class="thumbnail"></img>
+		</div>
+		<div class="show-item-right">
+			<h4>{{show.title}}</h4>
+			<p>{{show.desc}}</p>
+		</div>
+	</div> -->
+
+	<div class="show-item">
+		<a href="/#series/{{show.id}}">
+			<img src="{{show.imgUrl}}" class="thumbnail"></img>
+		</a>
+		<a href="/#series/{{show.id}}">
+			{{show.title}}
+		</a>
+	</div>
+
+</div>

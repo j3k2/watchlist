@@ -14,6 +14,8 @@
  *= require_tree .
  *= require_self
  */
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
 body {
 	font-family: 'Verdana', sans-serif;
 }
@@ -23,6 +25,13 @@ body {
 }
 .thumbnail{
 	width:100px;
+	margin-left:auto;
+	margin-right:auto;	
+	padding:0px;
+}
+
+.detail{
+	width:200px;
 	margin-left:auto;
 	margin-right:auto;	
 	padding:0px;
