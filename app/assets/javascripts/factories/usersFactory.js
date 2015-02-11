@@ -34,20 +34,12 @@ angular.module('watchlist.services').factory('usersFactory', [function(){
 				{
 					id:2,
 					category:"watching",
-					shows:[
-						{
-							
-						}
-					]
+					shows:[]
 				},
 				{
 					id:3,
 					category:"watched",
-					shows:[
-						{
-							
-						}
-					]
+					shows:[]
 				},
 			]
 				

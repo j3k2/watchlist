@@ -1,4 +1,5 @@
-angular.module('watchlist.services', []).factory('seriesFactory', [function(){
+angular.module('watchlist.services')
+	.factory('seriesFactory', [function(){
 	var series = {};
 
 	series = [

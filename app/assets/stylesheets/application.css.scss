@@ -34,6 +34,7 @@ a{
 }
 .nav-pills{
 	float:right;
+	margin-top:30px;
 }
 .logo{
 	height:80px;
@@ -45,6 +46,17 @@ a{
 	padding:0px;
 	border:none;
 }
+
+.mini{
+	width:50px;
+	margin-left:auto;
+	margin-right:auto;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
+	background:tan;
+	color:black;
+}
+
 
 .detail{
 	width:200px;
@@ -60,7 +72,9 @@ a{
 	border-radius:5px;
 	margin:5px;
 }
-
+.list-shows{
+margin:10px;
+}
 .detail-header{
 	width:250px;
 	text-align:center;

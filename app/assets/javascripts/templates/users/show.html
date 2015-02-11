@@ -1,8 +1,22 @@
 {{user.username}}
+	
+<!-- <users-lists user="user"></users-lists> -->
+<tabset>
+  <tab ng-repeat="list in user.lists" heading="{{list.category}}" active="tab.active" disabled="tab.disabled">
+		
+		<div ng-repeat="show in list.shows" class="row list-shows">
+			<!-- <div class="col-md-1"> -->
+				<a href="/#series/{{show.id}}"><img src="{{show.imgUrl}}" class="mini" /></a>
+			<!-- </div> -->
 
-<div ng-repeat="list in user.lists">
-	{{list.id}} -- {{list.category}}
-	<div ng-repeat="show in list.shows">
-		{{show.id}}
-	</div>
-</div>
+			<!-- <div class="col-md-4"> -->
+				{{show.title}}
+				<set-list show="show"></set-list>
+				<set-rating show="show"></set-rating>
+			<!-- </div> -->
+
+		</div>	
+  </tab>
+	
+</tabset>
+
