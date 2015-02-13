@@ -8,7 +8,7 @@ angular.module('watchlist.services').factory('usersFactory', [function(){
 			lists: [
 				{
 					id:1,
-					category:"to_watch",
+					category:"to watch",
 					shows:[
 						{
 							id: 73739,

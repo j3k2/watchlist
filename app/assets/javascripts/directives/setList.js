@@ -17,13 +17,6 @@ angular.module('watchlist.directives')
 						}.bind(listItem));
 					});
 				}
-
-				$scope.ratings = [{
-					id: 1,
-					userId: 1,
-					showId: 73739,
-					value: 5
-				}]
 								
 				$scope.setList = function(show, list){					
 					$scope.showId = show.id;
