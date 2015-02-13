@@ -31,9 +31,3 @@ watchlist.config(function($stateProvider, $urlRouterProvider) {
 			}
 		});
 });
-
-watchlist.controller('MainCtrl', ['$scope', MainCtrl]);
-
-function MainCtrl($scope) {
-
-}
