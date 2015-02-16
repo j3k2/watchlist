@@ -43,7 +43,6 @@ angular.module('watchlist.directives')
 				$scope.clearList = function(show, list){
 					$scope.showId = show.id;
 
-
 					$scope.currentUser.lists.forEach(function(listItem){
 						listItem.shows.forEach(function(show){
 							if(show.id == $scope.showId){

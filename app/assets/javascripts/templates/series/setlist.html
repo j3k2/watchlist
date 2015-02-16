@@ -5,8 +5,9 @@
       </button>
       <ul class="dropdown-menu" role="menu">
         <li ng-repeat="list in currentUser.lists"><a ng-click="setList(show, list)">{{list.category}}</a></li>
-				<hr>
-				<li ng-if="currentList"><a ng-click="clearList(show, currentList)">Remove from {{currentList.category}}</a></li>
-				
+				<li ng-if="currentList">
+					<hr>
+					<a ng-click="clearList(show, currentList)">Remove from {{currentList.category}}</a>
+				</li>
       </ul>
     </div>
