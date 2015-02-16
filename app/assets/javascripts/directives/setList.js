@@ -39,6 +39,24 @@ angular.module('watchlist.directives')
 					
 				};
 				
+				//remove show from list
+				$scope.clearList = function(show, list){
+					$scope.showId = show.id;
+
+
+					$scope.currentUser.lists.forEach(function(listItem){
+						listItem.shows.forEach(function(show){
+							if(show.id == $scope.showId){
+
+								var idx = this.shows.indexOf(show);
+								this.shows.splice(idx, 1);
+							}
+						}.bind(listItem));
+					});
+
+					$scope.currentList = null;
+				}
+				
 			}
 		};
 		
