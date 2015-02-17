@@ -23,13 +23,42 @@ watchlist.config(function($stateProvider, $urlRouterProvider) {
 		.state('user', {
 			url:'/user/:id',
 			templateUrl: 'users/show.html',
-			controller: function($scope, $stateParams, usersFactory){
+			controller: function($scope, $stateParams, usersFactory, $state){
 				var userId = $stateParams.id;
 				
 				usersFactory.getUser(userId).then(function(response){
 					$scope.user = response.data;
+					$state.go('user.list');
 				});
-
+				
+				
+			}
+		})
+		.state('user.list', {
+			url:'/list/:listId',
+			template: '{{ list.category }}\
+			<div ng-repeat="show in list.shows" class="row list-shows">\
+			<div class="col-md-1">\
+				<a href="/#series/{{show.id}}"><img src="{{show.imgUrl}}" class="mini" /></a>\
+			</div>\
+\
+			<div class="col-md-4">\
+				{{show.title}}\
+\
+			</div>\
+			<div class="col-md-2">\
+				<set-list show="show"></set-list>\
+			</div>\
+			<div class="col-md-2">\
+				<set-rating show="show"></set-rating>\
+			</div>\
+		</div>',
+			controller: function($scope, $stateParams, listsFactory){
+				$scope.listId = $stateParams.listId
+				//listfactory needed?
+				listsFactory.getList($scope.listId).then(function(list){
+					$scope.list = list.data
+				});
 			}
 		})
 		.state('login', {

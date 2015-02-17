@@ -1,6 +1,10 @@
-{{user.username}}
+<h1>{{user.username}}'s watchlists</h1>
 
-<tabset>
+<div class="lists-container">
+	<a ui-sref="user.list({listId: {{list.id}}})" class="btn btn-default list-buttons" ng-repeat="list in user.lists">{{list.category}}</a>
+</div>
+<ui-view></ui-view>
+<!--<tabset>
   <tab ng-repeat="list in user.lists" heading="{{list.category}}" active="list.active" disabled="list.disabled">
 
 		<div ng-repeat="show in list.shows" class="row list-shows">
@@ -22,5 +26,5 @@
 		</div>
   </tab>
 
-</tabset>
+</tabset> -->
 
