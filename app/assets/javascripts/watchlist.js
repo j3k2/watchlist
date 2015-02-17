@@ -20,28 +20,28 @@ watchlist.config(function($stateProvider, $urlRouterProvider) {
 				$scope.show = seriesFactory.getSeries(seriesId);
 			}
 		})
-		.state('userShow', {
+		.state('user', {
 			url:'/user/:id',
 			templateUrl: 'users/show.html',
-			controller: function($scope, $stateParams, usersFactory, Auth){
+			controller: function($scope, $stateParams, usersFactory){
 				var userId = $stateParams.id;
-				usersFactory.getCurrentUser().then(function(response){
+				
+				usersFactory.getUser(userId).then(function(response){
 					$scope.user = response.data;
 				});
-				
-			
+
 			}
 		})
 		.state('login', {
-		      url: '/login',
-		      templateUrl: 'auth/_login.html',
-		      controller: 'AuthCtrl',
-					onEnter: ['$state', 'Auth', function($state, Auth) {
-					        Auth.currentUser().then(function (){
-					          $state.go('index');
-					        });
-					      }]
-		    })
+	      url: '/login',
+	      templateUrl: 'auth/_login.html',
+	      controller: 'AuthCtrl',
+				onEnter: ['$state', 'Auth', function($state, Auth) {
+				        Auth.currentUser().then(function (){
+				          $state.go('index');
+				        });
+				      }]
+	  })
     .state('register', {
       url: '/register',
       templateUrl: 'auth/_register.html',

@@ -14,23 +14,16 @@ angular.module('watchlist.directives')
 						$scope.currentUser = user.data;
 					
 						$scope.currentUser.lists.forEach(function(listItem){
-							var scope = this;
 								listItem.shows.forEach(function(show){
-									if(show.id == scope.show.id){
-										scope.currentList = this;
-										
+									if(show.id == $scope.show.id){
+										$scope.currentList = this;
 										//set $scope.currentList to show's list
 									}
 								}.bind(listItem));
-							}.bind($scope));
+							});
 					})
 					
 				}
-								//
-				// $scope.$watch('currentList', function(list){
-				// 	console.log(list);
-				// })
-				//currentList $watch?
 				
 				
 				$scope.setList = function(show, list){				
@@ -38,12 +31,13 @@ angular.module('watchlist.directives')
 					$scope.showId = show.id;
 					$scope.currentList = list;
 					
+					//when a listing is deleted or created, also update clientside version of the user object...
 					
 					//delete show from other lists' shows					
 					$scope.currentUser.lists.forEach(function(listItem){
 						listItem.shows.forEach(function(series){
 							if(series.id === $scope.showId){
-								listingsFactory.deleteShowFromList(show, this)
+								listingsFactory.deleteShowFromList(show, this);
 							}
 						}.bind(listItem));
 					});

@@ -9,7 +9,7 @@ angular.module('watchlist.services')
 
 		addShowToList: function(show, list){
 			return $http.post('/api/listings', {show_id: show.id, list_id: list.id});
-		},
+		}
 
 	};
 		
