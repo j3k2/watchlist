@@ -9,6 +9,7 @@ angular.module('watchlist.directives')
 			controller: function($scope, usersFactory, seriesFactory, listsShowsFactory, Auth){
 				$scope.init = function(){
 					Auth.currentUser().then(function(user){
+						//avoid making $http call every time???
 						usersFactory.getUser(user.id).then(function(user){
 							
 							$scope.currentUser = user.data;
@@ -39,8 +40,10 @@ angular.module('watchlist.directives')
 								// var idx = this.shows.indexOf(show);
 								// this.shows.splice(idx, 1);
 								
-							listsShowsFactory.deleteShowFromList(show, list)// .then(function(){
-// 							})
+							listsShowsFactory.deleteShowFromList(show, this)
+								.then(function(){
+									listsShowsFactory.addShowToList(show, this)
+							})
 								
 							}
 						}.bind(listItem));
@@ -63,8 +66,7 @@ angular.module('watchlist.directives')
 																//
 								// var idx = this.shows.indexOf(show);
 								// this.shows.splice(idx, 1);
-								
-							listsShowsFactory.deleteShowFromList(show, list)// .then(function(){
+							listsShowsFactory.deleteShowFromList(show, this)// .then(function(){
 // 							})
 								
 							}
