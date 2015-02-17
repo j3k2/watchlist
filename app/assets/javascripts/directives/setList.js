@@ -6,7 +6,7 @@ angular.module('watchlist.directives')
 				show: "=",
 			},
 			templateUrl:'series/setlist.html', 
-			controller: function($scope, usersFactory, seriesFactory, Auth){
+			controller: function($scope, usersFactory, seriesFactory, listsShowsFactory, Auth){
 				$scope.init = function(){
 					Auth.currentUser().then(function(user){
 						usersFactory.getUser(user.id).then(function(user){
@@ -14,35 +14,42 @@ angular.module('watchlist.directives')
 							$scope.currentUser = user.data;
 							
 							$scope.currentUser.lists.forEach(function(listItem){
-							listItem.shows.forEach(function(show){
-								if(show.id == $scope.show.id){
-									$scope.currentList = this;
-								}
-							}.bind(listItem));
+								listItem.shows.forEach(function(show){
+									if(show.id == $scope.show.id){
+										$scope.currentList = this;
+									}
+								}.bind(listItem));
 						});
 						});
 					});
 			
 				};
 								
-				$scope.setList = function(show, list){					
+				$scope.setList = function(show, list){				
+						
 					$scope.showId = show.id;
 					$scope.currentList = list;
+					
 					
 					//delete show from other lists' shows					
 					$scope.currentUser.lists.forEach(function(listItem){
 						listItem.shows.forEach(function(show){
 							if(show.id == $scope.showId){
+																//
+								// var idx = this.shows.indexOf(show);
+								// this.shows.splice(idx, 1);
 								
-								var idx = this.shows.indexOf(show);
-								this.shows.splice(idx, 1);
+							listsShowsFactory.deleteShowFromList(show, list)// .then(function(){
+// 							})
+								
 							}
 						}.bind(listItem));
 					});
 
 					
 					//adds show to list's shows	
-					list.shows.push(show);
+					// list.shows.push(show);
+					listsShowsFactory.addShowToList(show, list)
 					
 				};
 				
@@ -53,9 +60,13 @@ angular.module('watchlist.directives')
 					$scope.currentUser.lists.forEach(function(listItem){
 						listItem.shows.forEach(function(show){
 							if(show.id == $scope.showId){
-
-								var idx = this.shows.indexOf(show);
-								this.shows.splice(idx, 1);
+																//
+								// var idx = this.shows.indexOf(show);
+								// this.shows.splice(idx, 1);
+								
+							listsShowsFactory.deleteShowFromList(show, list)// .then(function(){
+// 							})
+								
 							}
 						}.bind(listItem));
 					});
