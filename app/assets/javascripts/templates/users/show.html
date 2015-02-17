@@ -5,15 +5,19 @@
   <tab ng-repeat="list in user.lists" heading="{{list.category}}" active="tab.active" disabled="tab.disabled">
 		
 		<div ng-repeat="show in list.shows" class="row list-shows">
-			<!-- <div class="col-md-1"> -->
+			<div class="col-md-1">
 				<a href="/#series/{{show.id}}"><img src="{{show.imgUrl}}" class="mini" /></a>
-			<!-- </div> -->
+			</div>
 
-			<!-- <div class="col-md-4"> -->
+			<div class="col-md-4">
 				{{show.title}}
+			</div>
+			<div class="col-md-2">	
 				<set-list show="show"></set-list>
+			</div>
+			<div class="col-md-2">	
 				<set-rating show="show"></set-rating>
-			<!-- </div> -->
+			</div>
 
 		</div>	
   </tab>

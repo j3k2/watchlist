@@ -1,4 +1,4 @@
-var watchlist = angular.module('watchlist', ['templates', 'ui.router', 'ui.bootstrap', 'watchlist.services', 'watchlist.directives']);
+var watchlist = angular.module('watchlist', ['Devise', 'templates', 'ui.router', 'ui.bootstrap', 'watchlist.services', 'watchlist.directives']);
 
 
 watchlist.config(function($stateProvider, $urlRouterProvider) {
@@ -29,5 +29,62 @@ watchlist.config(function($stateProvider, $urlRouterProvider) {
 				
 				
 			}
-		});
+		})
+		.state('login', {
+		      url: '/login',
+		      templateUrl: 'auth/_login.html',
+		      controller: 'AuthCtrl',
+					onEnter: ['$state', 'Auth', function($state, Auth) {
+					        Auth.currentUser().then(function (){
+					          $state.go('index');
+					        });
+					      }]
+		    })
+    .state('register', {
+      url: '/register',
+      templateUrl: 'auth/_register.html',
+      controller: 'AuthCtrl',
+				onEnter: ['$state', 'Auth', function($state, Auth) {
+				        Auth.currentUser().then(function (){
+				          $state.go('index');
+				        });
+				      }]
+    });
 });
+
+watchlist.controller('NavCtrl', ['$scope', 'Auth', '$state', function($scope, Auth, $state){
+  $scope.signedIn = Auth.isAuthenticated;
+
+  $scope.logout = Auth.logout;
+
+	Auth.currentUser().then(function (user){
+	     $scope.user = user;
+	});
+  $scope.$on('devise:new-registration', function (e, user){
+    $scope.user = user;
+  });
+
+  $scope.$on('devise:login', function (e, user){
+    $scope.user = user;
+  });
+
+  $scope.$on('devise:logout', function (e, user){
+    $scope.user = {};
+		$state.go('index');
+  });
+	
+}]);
+
+watchlist.controller('AuthCtrl', ['$scope', '$state', 'Auth', function($scope, $state, Auth){
+	$scope.login = function() {
+	    Auth.login($scope.user).then(function(){
+	      $state.go('index');
+	    });
+	  };
+
+  $scope.register = function() {
+    Auth.register($scope.user).then(function(){
+      $state.go('index');
+    });
+  };
+}]);
