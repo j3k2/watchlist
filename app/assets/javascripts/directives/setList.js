@@ -3,29 +3,36 @@ angular.module('watchlist.directives')
 		return {
 			restrict: 'E',
 			scope: {
-				show: "=",
+				show: "="
 			},
 			templateUrl:'series/setlist.html', 
 			controller: function($scope, usersFactory, seriesFactory, listsShowsFactory, Auth){
-				$scope.init = function(){
-					Auth.currentUser().then(function(user){
-						//avoid making $http call every time???
-						usersFactory.getUser(user.id).then(function(user){
-							
-							$scope.currentUser = user.data;
-							
-							$scope.currentUser.lists.forEach(function(listItem){
+				
+				$scope.initSetList = function(){
+					usersFactory.getCurrentUser().then(function(user){
+					
+						$scope.currentUser = user.data;
+					
+						$scope.currentUser.lists.forEach(function(listItem){
+							var scope = this;
 								listItem.shows.forEach(function(show){
-									if(show.id == $scope.show.id){
-										$scope.currentList = this;
+									if(show.id == scope.show.id){
+										scope.currentList = this;
+										
+										//set $scope.currentList to show's list
 									}
 								}.bind(listItem));
-						});
-						});
-					});
-			
-				};
-								
+							}.bind($scope));
+					})
+					
+				}
+								//
+				// $scope.$watch('currentList', function(list){
+				// 	console.log(list);
+				// })
+				//currentList $watch?
+				
+				
 				$scope.setList = function(show, list){				
 						
 					$scope.showId = show.id;
@@ -34,25 +41,21 @@ angular.module('watchlist.directives')
 					
 					//delete show from other lists' shows					
 					$scope.currentUser.lists.forEach(function(listItem){
-						listItem.shows.forEach(function(show){
-							if(show.id == $scope.showId){
-																//
-								// var idx = this.shows.indexOf(show);
-								// this.shows.splice(idx, 1);
-								
-							listsShowsFactory.deleteShowFromList(show, this)
-								.then(function(){
-									listsShowsFactory.addShowToList(show, this)
-							})
-								
+						listItem.shows.forEach(function(series){
+							if(series.id === $scope.showId){
+								listsShowsFactory.deleteShowFromList(show, this)
 							}
 						}.bind(listItem));
 					});
 
+
+					//adds show to list's shows
+					listsShowsFactory.addShowToList(show, list);
 					
-					//adds show to list's shows	
-					// list.shows.push(show);
-					listsShowsFactory.addShowToList(show, list)
+					usersFactory.getCurrentUser().then(function(user){
+					
+						$scope.currentUser = user.data;
+					})
 					
 				};
 				
@@ -63,12 +66,7 @@ angular.module('watchlist.directives')
 					$scope.currentUser.lists.forEach(function(listItem){
 						listItem.shows.forEach(function(show){
 							if(show.id == $scope.showId){
-																//
-								// var idx = this.shows.indexOf(show);
-								// this.shows.splice(idx, 1);
-							listsShowsFactory.deleteShowFromList(show, this)// .then(function(){
-// 							})
-								
+								listsShowsFactory.deleteShowFromList(show, this);
 							}
 						}.bind(listItem));
 					});

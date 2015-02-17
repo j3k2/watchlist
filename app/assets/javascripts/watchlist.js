@@ -23,13 +23,13 @@ watchlist.config(function($stateProvider, $urlRouterProvider) {
 		.state('userShow', {
 			url:'/user/:id',
 			templateUrl: 'users/show.html',
-			controller: function($scope, $stateParams, usersFactory){
+			controller: function($scope, $stateParams, usersFactory, Auth){
 				var userId = $stateParams.id;
-				usersFactory.getUser(userId).then(function(response){
+				usersFactory.getCurrentUser().then(function(response){
 					$scope.user = response.data;
 				});
 				
-				
+			
 			}
 		})
 		.state('login', {
