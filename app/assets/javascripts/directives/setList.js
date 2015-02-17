@@ -6,17 +6,24 @@ angular.module('watchlist.directives')
 				show: "=",
 			},
 			templateUrl:'series/setlist.html', 
-			controller: function($scope, usersFactory, seriesFactory){
-				$scope.currentUser = usersFactory.getUser(1);
+			controller: function($scope, usersFactory, seriesFactory, Auth){
 				$scope.init = function(){
-					$scope.currentUser.lists.forEach(function(listItem){
-						listItem.shows.forEach(function(show){
-							if(show.id == $scope.show.id){
-								$scope.currentList = this;
-							}
-						}.bind(listItem));
+					Auth.currentUser().then(function(user){
+						usersFactory.getUser(user.id).then(function(user){
+							
+							$scope.currentUser = user.data;
+							
+							$scope.currentUser.lists.forEach(function(listItem){
+							listItem.shows.forEach(function(show){
+								if(show.id == $scope.show.id){
+									$scope.currentList = this;
+								}
+							}.bind(listItem));
+						});
+						});
 					});
-				}
+			
+				};
 								
 				$scope.setList = function(show, list){					
 					$scope.showId = show.id;
@@ -54,7 +61,7 @@ angular.module('watchlist.directives')
 					});
 
 					$scope.currentList = null;
-				}
+				};
 				
 			}
 		};

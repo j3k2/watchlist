@@ -25,7 +25,9 @@ watchlist.config(function($stateProvider, $urlRouterProvider) {
 			templateUrl: 'users/show.html',
 			controller: function($scope, $stateParams, usersFactory){
 				var userId = $stateParams.id;
-				$scope.user = usersFactory.getUser(userId);
+				usersFactory.getUser(userId).then(function(response){
+					$scope.user = response.data;
+				});
 				
 				
 			}

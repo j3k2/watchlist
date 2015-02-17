@@ -20,7 +20,8 @@
 
 body {
 	font-family: 'Verdana', sans-serif;
-	background:tan;
+	background:wheat;
+	color:black;
 }
 hr{
 margin:0px;
@@ -28,8 +29,13 @@ margin:0px;
 a{
 	color:black;
 }
+.btn-primary{
+	background:teal;
+	border:none;
+}
 .navbar{
-	background: wheat;
+	background: teal;
+	color:white;
 	border:0px;
 	border-radius:0px;
 	height:80px;
@@ -58,10 +64,18 @@ a{
 	margin-right:auto;
 }
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
-	background:tan;
+	background:wheat;
 	color:black;
+	border-color:black;
 }
-
+.nav-tabs > li:hover > a{
+	background:wheat;
+	border-color:black;
+	color:black;	
+}
+.nav{
+	border-bottom-color:black;
+}
 
 .detail{
 	width:200px;
@@ -73,7 +87,6 @@ a{
 .show-item{
 	display:inline-block;
 	float:left;
-	width:150px;
 	border-radius:5px;
 	margin:5px;
 	text-align:center;
