@@ -6,7 +6,7 @@ angular.module('watchlist.directives')
 				show: "="
 			},
 			templateUrl:'series/setlist.html', 
-			controller: function($scope, usersFactory, seriesFactory, listsShowsFactory, Auth){
+			controller: function($scope, usersFactory, seriesFactory, listingsFactory, Auth){
 				
 				$scope.initSetList = function(){
 					usersFactory.getCurrentUser().then(function(user){
@@ -43,14 +43,14 @@ angular.module('watchlist.directives')
 					$scope.currentUser.lists.forEach(function(listItem){
 						listItem.shows.forEach(function(series){
 							if(series.id === $scope.showId){
-								listsShowsFactory.deleteShowFromList(show, this)
+								listingsFactory.deleteShowFromList(show, this)
 							}
 						}.bind(listItem));
 					});
 
 
 					//adds show to list's shows
-					listsShowsFactory.addShowToList(show, list);
+					listingsFactory.addShowToList(show, list);
 					
 					usersFactory.getCurrentUser().then(function(user){
 					
@@ -66,7 +66,7 @@ angular.module('watchlist.directives')
 					$scope.currentUser.lists.forEach(function(listItem){
 						listItem.shows.forEach(function(show){
 							if(show.id == $scope.showId){
-								listsShowsFactory.deleteShowFromList(show, this);
+								listingsFactory.deleteShowFromList(show, this);
 							}
 						}.bind(listItem));
 					});

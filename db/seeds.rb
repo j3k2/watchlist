@@ -66,7 +66,7 @@ lists = List.create([
 					user_id: 1,
 					category:"watched"
 				}])
-listsShows = ListsShows.create([
+listings = Listing.create([
           {
             list_id: 1,
             show_id: 70533

@@ -1,5 +1,6 @@
 class List < ActiveRecord::Base
   belongs_to :user
   
-  has_and_belongs_to_many :shows
+  has_many :listings
+  has_many :shows, through: :listings
 end
