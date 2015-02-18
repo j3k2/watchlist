@@ -32,6 +32,7 @@ a{
 .btn-primary{
 	background:teal;
 	border:none;
+	border-radius:0px;
 }
 .navbar{
 	background: teal;
@@ -56,6 +57,7 @@ a{
 	margin-right:auto;	
 	padding:0px;
 	border:none;
+	border-radius:0px;
 }
 
 .mini{
@@ -87,7 +89,6 @@ a{
 .show-item{
 	display:inline-block;
 	float:left;
-	border-radius:5px;
 	margin:5px;
 	text-align:center;
 }
@@ -103,4 +104,8 @@ margin:10px;
 }
 .lists-container{
 	border: dashed 1px black;
+}
+
+.desc{
+margin-top:5px;
 }
