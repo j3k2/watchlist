@@ -100,7 +100,7 @@ watchlist.controller('NavCtrl', ['$scope', 'Auth', '$state', function($scope, Au
 
   $scope.$on('devise:logout', function (e, user){
     $scope.user = {};
-		$state.go('index');
+		$state.go('login');
   });
 	
 }]);

@@ -17,7 +17,6 @@
 //= require angular-ui-router	
 //= require angular-rails-templates
 //= require angular-ui-bootstrap-tpls
-//= require bootbox.min.js
 //= require_tree ./templates
 //= require_tree .
 //= require_tree ./factories
