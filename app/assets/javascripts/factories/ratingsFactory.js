@@ -1,27 +1,21 @@
 angular.module('watchlist.services')
-	.factory('ratingsFactory', [function(){
+	.factory('ratingsFactory', ['$http', function($http){
 		
-		var ratings = []
-	
-
 		return {
 			getRating: function(showId, userId){
-				var selectedRating = null;
-				ratings.forEach(function(rating){
-					if(rating.userId == userId && rating.showId == showId){
-						selectedRating = rating;
-					}
-				})
-				return selectedRating || {};
+
+				return $http.get('/api/ratings/' + userId, {params: {show_id: showId}});
+				
 			},
 			
-			newRating: function(showId, userId, value){
-				ratings.push({
-					id: ratings.length + 1,
-					userId: userId,
-					showId: showId,
-					value: value
-				})
+			updateRating: function(showId, userId, value){
+				return $http.patch('/api/ratings/' + userId, 
+				{show_id: showId, user_id: userId, value: value})
+			},
+			
+			createRating: function(showId, userId, value){
+				return $http.post('/api/ratings',
+				{show_id: showId, user_id: userId, value: value})
 			}
 		}
 		

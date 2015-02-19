@@ -2,12 +2,23 @@
   <h1>Log In</h1>
 </div>
 
-<form ng-submit="login()">
+<form id="sign-in" ng-submit="login()">
   <div class="input-group">
-    <input type="email" class="form-control" placeholder="Email" ng-model="user.email">
+    <input type="email" id="email" class="form-control" placeholder="Email" ng-model="user.email">
   </div>
   <div class="input-group">
-    <input type="password" class="form-control" placeholder="Password" ng-model="user.password">
+    <input type="password" id="password" class="form-control" placeholder="Password" ng-model="user.password">
   </div>
   <input type="submit" class="btn btn-default" value="Log In">
+	
 </form>
+
+<!-- <button class="btn btn-lg btn-default" id="guest">Guest Login</button> -->
+
+<!--<script>
+$('button#guest').on('click', function(){
+	$('#email').val("demo@demo.com");
+	$('#password').val("demodemo");
+	$('form#sign-in').submit();
+})
+</script> -->

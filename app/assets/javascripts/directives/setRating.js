@@ -6,17 +6,42 @@ angular.module('watchlist.directives')
 				show: "="
 			},
 			templateUrl: 'series/setrating.html',
-			controller: function($scope, ratingsFactory) {
+			controller: function($scope, ratingsFactory, Auth) {
 				$scope.init = function(){
-					$scope.rate = ratingsFactory.getRating($scope.show.id, 1).value; //get from Ratingsfactory (passing it the showId and userId)
-				
-				}
-				
-				$scope.isReadOnly = false;
-				$scope.$watch('rate', function(value){
-					ratingsFactory.newRating($scope.show.id, 1, value);
+					
+					Auth.currentUser().then(function(user){
+						$scope.currentUser = user;
+						ratingsFactory.getRating($scope.show.id, $scope.currentUser.id)
+							.then(function(rating){
+								if(rating.data !== null){
+									$scope.rate = rating.data.value;
+									$scope.ratingId = rating.data.id;
+								}
+							}); 
+						});
+				};
 
+				$scope.isReadOnly = false;
+				$scope.$watch('rate', function(newRating, oldRating){
+
+					if(newRating !== oldRating){
+						Auth.currentUser().then(function(user){
+							$scope.currentUser = user
+							if(newRating !== null){
+								if($scope.ratingId){
+									ratingsFactory.updateRating($scope.show.id, $scope.currentUser.id, newRating)
+								} else {
+									ratingsFactory.createRating($scope.show.id, $scope.currentUser.id, newRating)
+								}
+							}
+							
+						
+							
+							
+						});
+					}
+					
 				});
 				}
-			}
+			};
 	});

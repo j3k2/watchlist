@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :users
     resources :listings
     resources :lists
+    resources :ratings
   end
   
 end

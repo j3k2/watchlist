@@ -10,13 +10,13 @@ angular.module('watchlist.services')
 			imgUrl: 'assets/series/73739.jpg'
 		},
 		{
-			id: 79126,
+			id: 2,
 			title: 'The Wire',
 			desc: 'Unlike most television crime dramas, which neatly introduce and then solve a case all in the space of one hour, HBO\'s THE WIRE follows one single drug and homicide investigation throughout the length of an entire season. Centered on the drug culture of inner-city Baltimore, the series\' storyline unfolds from the points of view of both the criminals lording the streets and the police officers determined to bring them down.',
 			imgUrl: 'assets/series/79126.jpg'
 		},
 		{
-			id: 81189,
+			id: 3,
 			title: 'Breaking Bad',
 			desc: 'Walter White, a struggling high school chemistry teacher, is diagnosed with advanced lung cancer. He turns to a life of crime, producing and selling methamphetamine accompanied by a former student, Jesse Pinkman, with the aim of securing his family\'s financial future before he dies.',
 			imgUrl: 'assets/series/81189.jpg'

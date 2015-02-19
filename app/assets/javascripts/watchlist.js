@@ -43,7 +43,7 @@ watchlist.config(function($stateProvider, $urlRouterProvider) {
 			</div>\
 \
 			<div class="col-md-4">\
-				{{show.title}}\
+				<a href="/#series/{{show.id}}">{{show.title}}</a>\
 \
 			</div>\
 			<div class="col-md-2">\
@@ -55,7 +55,6 @@ watchlist.config(function($stateProvider, $urlRouterProvider) {
 		</div>',
 			controller: function($scope, $stateParams, listsFactory){
 				$scope.listId = $stateParams.listId
-				//listfactory needed?
 				listsFactory.getList($scope.listId).then(function(list){
 					$scope.list = list.data
 				});
