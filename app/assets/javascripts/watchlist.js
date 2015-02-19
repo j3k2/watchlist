@@ -117,4 +117,10 @@ watchlist.controller('AuthCtrl', ['$scope', '$state', 'Auth', function($scope, $
       $state.go('index');
     });
   };
+	
+	$scope.guestLogin = function() {
+		Auth.login({email: 'guest@guest.com', password: 'guestguest'}).then(function(){
+			$state.go('index');
+		})
+	};
 }]);
