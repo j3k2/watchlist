@@ -34,10 +34,8 @@ angular.module('watchlist.directives')
 									ratingsFactory.createRating($scope.show.id, $scope.currentUser.id, newRating)
 								}
 							}
-							
-						
-							
-							
+						}, function(){
+							$scope.promptLogin = true;
 						});
 					}
 					
