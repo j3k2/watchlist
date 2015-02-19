@@ -88,7 +88,7 @@ watchlist.controller('NavCtrl', ['$scope', 'Auth', '$state', function($scope, Au
   $scope.logout = Auth.logout;
 
 	Auth.currentUser().then(function (user){
-	     $scope.user = user;
+		$scope.user = user;
 	});
   $scope.$on('devise:new-registration', function (e, user){
     $scope.user = user;

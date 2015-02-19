@@ -73,3 +73,12 @@ listings = Listing.create([
           }
           
         ])
+        
+user = User.create([
+  {
+    id:2,
+    username:'guest',
+    email: 'guest@guest.com',
+    password:'guestguest'
+  }
+])
