@@ -53,17 +53,17 @@ lists = List.create([
   
       {
 					id:1,
-					user_id: 1,
+					user_id: 2,
 					category:"to watch"
 				},
 				{
 					id:2,
-					user_id: 1,
+					user_id: 2,
 					category:"watching"
 				},
 				{
 					id:3,
-					user_id: 1,
+					user_id: 2,
 					category:"watched"
 				}])
 listings = Listing.create([
@@ -73,7 +73,6 @@ listings = Listing.create([
           }
           
         ])
-        
 user = User.create([
   {
     id:2,
