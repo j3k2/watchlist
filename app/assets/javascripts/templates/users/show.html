@@ -1,7 +1,9 @@
-<h1>{{user.username}}'s watchlists</h1>
+<span class="h1">{{user.username}}'s watchlists</span> 
 
 <div class="lists-container">
 	<a ui-sref="user.list({listId: {{list.id}}})" class="btn btn-default list-buttons" ng-repeat="list in user.lists">{{list.category}}</a>
+	<!-- <a class="btn btn-default" href="#/user/{{user.id}}/newlist" ng-if="currentUser"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+New list</a> -->
 </div>
 <ui-view></ui-view>
 <!--<tabset>

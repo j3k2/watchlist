@@ -23,14 +23,23 @@ watchlist.config(function($stateProvider, $urlRouterProvider) {
 		.state('user', {
 			url:'/user/:id',
 			templateUrl: 'users/show.html',
-			controller: function($scope, $stateParams, usersFactory, $state){
+			controller: function($scope, $stateParams, usersFactory, $state, Auth){
 				var userId = $stateParams.id;
 				
 				usersFactory.getUser(userId).then(function(response){
 					$scope.user = response.data;
-					$state.go('user.list');
+					// $state.go('user.list');
 				});
 				
+				Auth.currentUser().then(function(response){
+					$scope.currentUser = response;
+				})	
+			}
+		})
+		.state('user.newlist', {
+			url:'/newlist',
+			template:'<div>asdf</div>',
+			controller: function(){
 				
 			}
 		})
@@ -90,19 +99,19 @@ watchlist.controller('NavCtrl', ['$scope', 'Auth', '$state', function($scope, Au
 	Auth.currentUser().then(function (user){
 		$scope.user = user;
 	});
-  $scope.$on('devise:new-registration', function (e, user){
-    $scope.user = user;
-  });
+	  $scope.$on('devise:new-registration', function (e, user){
+	    $scope.user = user;
+	  });
 
-  $scope.$on('devise:login', function (e, user){
-    $scope.user = user;
-  });
+	  $scope.$on('devise:login', function (e, user){
+	    $scope.user = user;
+	  });
 
-  $scope.$on('devise:logout', function (e, user){
-    $scope.user = {};
+	  $scope.$on('devise:logout', function (e, user){
+	    $scope.user = {};
 		$state.go('login');
-  });
-	
+	  });
+
 }]);
 
 watchlist.controller('AuthCtrl', ['$scope', '$state', 'Auth', function($scope, $state, Auth){
