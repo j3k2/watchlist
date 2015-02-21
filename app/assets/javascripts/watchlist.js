@@ -1,7 +1,7 @@
 var watchlist = angular.module('watchlist', ['ngLoadingSpinner','templates', 'ui.router', 'ui.bootstrap', 'watchlist.services', 'watchlist.directives']);
 
 watchlist.config(['usSpinnerConfigProvider', function (usSpinnerConfigProvider) {
-    usSpinnerConfigProvider.setDefaults({color: 'black'});
+    usSpinnerConfigProvider.setDefaults({color: 'wheat'});
 }]);
 watchlist.config(function($stateProvider, $urlRouterProvider) {
 	$urlRouterProvider.otherwise('/');
@@ -55,14 +55,14 @@ watchlist.config(function($stateProvider, $urlRouterProvider) {
 				<a href="/#series/{{show.id}}"><img src="{{show.imgUrl}}" class="mini" /></a>\
 			</div>\
 \
-			<div class="col-md-4">\
+			<div class="col-md-2">\
 				<a href="/#series/{{show.id}}">{{show.title}}</a>\
 \
 			</div>\
 			<div class="col-md-2">\
 				<set-list show="show"></set-list>\
 			</div>\
-			<div class="col-md-2">\
+			<div class="col-md-1">\
 				<set-rating show="show"></set-rating>\
 			</div>\
 		</div>',

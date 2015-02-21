@@ -1,9 +1,7 @@
-<div class="col-md-10">
-<span us-spinner="{radius:30, width:8, length: 16}"></span>
-<h1>Featured shows</h1>
+<!-- <div class="col-md-10"> -->
+<h1 class="header-text">Available shows</h1>
 <br>
-<div ng-repeat="show in shows">
-	<div class="show-item">
+<div ng-repeat="show in shows" class="show-item">
 		<a href="/#series/{{show.id}}">
 			<img src="{{show.imgUrl}}" class="thumbnail"></img>
 		</a>
@@ -14,9 +12,4 @@
 		<Br>
 		<set-rating show="show"></set-rating>
 
-			
-
-
-	</div>
-
-</div>
+<!--</div> -->
