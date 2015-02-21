@@ -2,7 +2,10 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.7'
+gem 'rails', '4.2'
+#
+# gem 'railties', '4.1'
+# gem 'activesupport', '4.2'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -27,9 +30,11 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
-gem 'devise'
+# gem 'devise'
+# gem 'devise_token_auth', '0.1.31'
+# gem 'omniauth'
 gem 'angular_rails_csrf'
 gem 'angular-ui-bootstrap-rails'
 gem 'angular-rails-templates'

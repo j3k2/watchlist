@@ -5,5 +5,6 @@ module Api
       @user = User.find(params[:id])
       render :show
     end
+    
   end
 end

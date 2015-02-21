@@ -72,12 +72,11 @@ listings = Listing.create([
             show_id: 70533
           }
           
-        ])
-user = User.create([
-  {
-    id:2,
-    username:'guest',
-    email: 'guest@guest.com',
-    password:'guestguest'
-  }
-])
+        ])#
+# user = User.create([
+#   {
+#     id:2,
+#     username:'guest',
+#     password:'guestguest'
+#   }
+# ])

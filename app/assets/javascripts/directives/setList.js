@@ -6,7 +6,7 @@ angular.module('watchlist.directives')
 				show: "="
 			},
 			templateUrl:'series/setlist.html', 
-			controller: function($scope, usersFactory, seriesFactory, listingsFactory, Auth){
+			controller: function($scope, usersFactory, seriesFactory, listingsFactory, $window){
 				
 				$scope.initSetList = function(){
 					usersFactory.getCurrentUser().then(function(user){

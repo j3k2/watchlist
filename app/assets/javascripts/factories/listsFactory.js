@@ -1,5 +1,5 @@
 angular.module('watchlist.services')
-.factory('listsFactory', ['$http', 'Auth', function($http, Auth){
+.factory('listsFactory', ['$http', function($http){
 
 
 	return {

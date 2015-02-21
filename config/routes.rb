@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
-  devise_for :users
   root "static_page#index"
+  
+  resources :users
+  resource :session
+  
   
   namespace :api, defaults: {format: :json} do
     resources :users

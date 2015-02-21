@@ -6,11 +6,11 @@ angular.module('watchlist.directives')
 				show: "="
 			},
 			templateUrl: 'series/setrating.html',
-			controller: function($scope, ratingsFactory, Auth) {
+			controller: function($scope, ratingsFactory, $window, usersFactory) {
 				$scope.init = function(){
 					
-					Auth.currentUser().then(function(user){
-						$scope.currentUser = user;
+					usersFactory.getCurrentUser().then(function(user){
+						$scope.currentUser = user.data;
 						ratingsFactory.getRating($scope.show.id, $scope.currentUser.id)
 							.then(function(rating){
 								if(rating.data !== null){
@@ -25,18 +25,28 @@ angular.module('watchlist.directives')
 				$scope.$watch('rate', function(newRating, oldRating){
 
 					if(newRating !== oldRating){
-						Auth.currentUser().then(function(user){
-							$scope.currentUser = user
+						
+						if($scope.currentUser){
 							if(newRating !== null){
 								if($scope.ratingId){
-									ratingsFactory.updateRating($scope.show.id, $scope.currentUser.id, newRating)
+									ratingsFactory.updateRating($scope.show.id, $scope.currentUser.id, newRating);
 								} else {
-									ratingsFactory.createRating($scope.show.id, $scope.currentUser.id, newRating)
+									ratingsFactory.createRating($scope.show.id, $scope.currentUser.id, newRating);
 								}
 							}
-						}, function(){
+						} else {
 							$scope.promptLogin = true;
-						});
+						}
+						
+						
+						// usersFactory.getCurrentUser().then(function(user){
+							
+// 						}// , function(){
+// // 							$scope.promptLogin = true;
+// // 						}
+// //
+// 					);
+							
 					}
 					
 				});
