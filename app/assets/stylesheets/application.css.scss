@@ -26,6 +26,22 @@ body {
 hr{
 margin:0px;
 }
+.btn{
+background:teal;
+color:wheat;
+border-color: wheat;
+
+}
+.btn:hover{
+background:teal;
+border-color: wheat;
+color:black;
+}
+.btn:focus{
+background:teal;
+color:black;
+border-color: wheat;
+}
 a{
 	color:black;
 }
