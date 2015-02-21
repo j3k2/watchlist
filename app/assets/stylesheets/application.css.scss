@@ -78,7 +78,14 @@ a{
 .nav{
 	border-bottom-color:black;
 }
-
+.btn-grp{	
+	float:right;
+	padding: 10px;
+	padding-top: 35px;
+}
+form.button_to{
+	display: inline-block;
+}
 .detail{
 	width:200px;
 	margin-left:auto;

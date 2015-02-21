@@ -1,15 +1,16 @@
 					<h1>Sign In</h1>
-					<form action="<%= session_url %>" method="POST" class="navbar-form" id="sign-in">
+					<form action="<%= session_url %>" method="POST" class="user-form" id="sign-in">
 
 						<input type="hidden"
 								name="authenticity_token"
 								value="<%= form_authenticity_token %>">	
 
-						<input type="text" name="user[username]" id="user_username" class="txti-small" placeholder="Username">
+						<input type="text" name="user[username]" id="user_username" placeholder="Username"><br>
 	
-						<input type="password" name="user[password]" id="user_password" class="txti-small" placeholder="Password">
+						<input type="password" name="user[password]" id="user_password" placeholder="Password"><br>
 						<input type="submit" value="Sign In" class="btn-default">
-					</form>		
+					</form>		<button class="btn-default btn-lg" id="guest">Guest Sign-in</button><br><br>	
+
 					
 	
 						<h1>Sign Up</h1>
@@ -20,10 +21,9 @@
 								name="authenticity_token"
 								value="<%= form_authenticity_token %>">	
 
-						<input type="text" name="user[username]" id="user_username_signup" class="txti" placeholder="Username"><br>
+						<input type="text" name="user[username]" id="user_username_signup" placeholder="Username"><br>
 	
-						<input type="password" name="user[password]" id="user_password_signup" class="txti" placeholder="Password"><br>
-					<br>
+						<input type="password" name="user[password]" id="user_password_signup" placeholder="Password"><br>
 						<input type="submit" value="Sign Up" class="btn-default">
 					</form>	
 					

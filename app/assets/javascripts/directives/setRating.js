@@ -38,15 +38,6 @@ angular.module('watchlist.directives')
 							$scope.promptLogin = true;
 						}
 						
-						
-						// usersFactory.getCurrentUser().then(function(user){
-							
-// 						}// , function(){
-// // 							$scope.promptLogin = true;
-// // 						}
-// //
-// 					);
-							
 					}
 					
 				});
