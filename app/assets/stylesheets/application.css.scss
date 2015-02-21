@@ -28,26 +28,32 @@ margin:0px;
 }
 .btn{
 background:teal;
-color:wheat;
-border-color: wheat;
+color:black;
+border-color: black;
+border-radius:0px;
 
 }
 .btn:hover{
 background:teal;
-border-color: wheat;
+border-color: black;
 color:black;
 }
 .btn:focus{
 background:teal;
-color:black;
-border-color: wheat;
+color:wheat;
+border-color: black;
+}
+
+.dropdown-list{
+	border-radius:0px;
+	background:pink;
 }
 a{
 	color:black;
 }
 .btn-primary{
 	background:teal;
-	border:none;
+	border:solid 1px black;
 	border-radius:0px;
 }
 .navbar{

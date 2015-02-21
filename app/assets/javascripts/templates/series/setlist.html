@@ -1,9 +1,9 @@
 <div class="btn-group" dropdown ng-init="initSetList()">
       <a href="#/user/{{currentUser.id}}/list/{{currentList.id}}" type="button" class="btn btn-primary" ng-show="currentList">{{currentList.category}}</a>
 			
-			<div type="button" class="btn btn-primary" ng-hide="currentList">Add to list</div>
+			<button type="button" class="btn btn-primary dropdown-list" ng-hide="currentList">Add to list</button>
 			
-      <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle>
+      <button type="button" class="btn btn-primary ng-binding dropdown-toggle" dropdown-toggle>
         <span class="caret"></span>
       </button>
       <ul class="dropdown-menu" role="menu">
