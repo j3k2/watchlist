@@ -1,6 +1,8 @@
-var watchlist = angular.module('watchlist', ['templates', 'ui.router', 'ui.bootstrap', 'watchlist.services', 'watchlist.directives']);
+var watchlist = angular.module('watchlist', ['ngLoadingSpinner','templates', 'ui.router', 'ui.bootstrap', 'watchlist.services', 'watchlist.directives']);
 
-
+watchlist.config(['usSpinnerConfigProvider', function (usSpinnerConfigProvider) {
+    usSpinnerConfigProvider.setDefaults({color: 'black'});
+}]);
 watchlist.config(function($stateProvider, $urlRouterProvider) {
 	$urlRouterProvider.otherwise('/');
 	

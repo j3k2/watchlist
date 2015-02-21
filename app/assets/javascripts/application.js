@@ -13,6 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require angular
+//= require spin.js/spin.js
+//= require angular-spinner.js
+//= require angular-loading-spinner.js
 //= require angular-ui-router	
 //= require angular-rails-templates
 //= require angular-ui-bootstrap-tpls
