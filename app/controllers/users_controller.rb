@@ -7,6 +7,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login(@user)
+      List.create({category: 'to watch', user_id: @user.id});
+      List.create({category: 'watching', user_id: @user.id});
+      List.create({category: 'watched', user_id: @user.id});
+
       redirect_to root_url
     else
       flash[:errors] = @user.errors.full_messages

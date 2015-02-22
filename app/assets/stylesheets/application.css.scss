@@ -77,7 +77,7 @@ a{
 	margin-left:auto;
 	margin-right:auto;	
 	padding:0px;
-	border:solid 1px wheat;
+	border:none;
 	border-radius:0px;
 }
 
@@ -85,7 +85,7 @@ a{
 	width:50px;
 	margin-left:auto;
 	margin-right:auto;
-	border:solid 1px wheat;
+	border:none;
 	
 }
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
@@ -109,12 +109,21 @@ a{
 form.button_to{
 	display: inline-block;
 }
+input{
+	border:none;
+	background:teal;
+	margin:5px;
+	color:black;
+}
+.btn-sign-out{
+	margin:0px;
+}
 .detail{
 	width:200px;
 	margin-left:auto;
 	margin-right:auto;	
 	padding:0px;
-	border:solid 1px wheat;
+	border:none;
 }
 
 .show-item{
@@ -123,6 +132,7 @@ form.button_to{
 	margin:5px;
 	text-align:center;
 }
+
 .list-shows{
 margin:10px;
 }
