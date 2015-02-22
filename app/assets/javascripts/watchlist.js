@@ -49,23 +49,7 @@ watchlist.config(function($stateProvider, $urlRouterProvider) {
 		})
 		.state('user.list', {
 			url:'/list/:listId',
-			template: '{{ list.category }}\
-			<div ng-repeat="show in list.shows" class="row list-shows">\
-			<div class="col-md-1">\
-				<a href="/#series/{{show.id}}"><img src="{{show.imgUrl}}" class="mini" /></a>\
-			</div>\
-\
-			<div class="col-md-2">\
-				<a href="/#series/{{show.id}}">{{show.title}}</a>\
-\
-			</div>\
-			<div class="col-md-2">\
-				<set-list show="show"></set-list>\
-			</div>\
-			<div class="col-md-1">\
-				<set-rating show="show"></set-rating>\
-			</div>\
-		</div>',
+			templateUrl: 'users/list.html',
 			controller: function($scope, $stateParams, listsFactory){
 				$scope.listId = $stateParams.listId
 				listsFactory.getList($scope.listId).then(function(list){
