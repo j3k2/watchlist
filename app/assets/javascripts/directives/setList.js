@@ -1,17 +1,16 @@
-angular.module('watchlist.directives')
-	.directive("setList", function(){
+angular.module('watchlist.directives').directive('setList', ['$rootScope', '$cacheFactory', function(){
 		return {
 			restrict: 'E',
 			scope: {
 				show: "="
 			},
 			templateUrl:'series/setlist.html', 
-			controller: function($scope, usersFactory, seriesFactory, listingsFactory, $window){
+			controller: function($scope, usersFactory, seriesFactory, listingsFactory, $window, $cacheFactory, $rootScope){
 				
 				$scope.initSetList = function(){
-					usersFactory.getCurrentUser().then(function(user){
-					
+					usersFactory.getCurrentUser().then(function(user){					
 						$scope.currentUser = user.data;
+						$rootScope.currentUser = user.data;
 					
 						$scope.currentUser.lists.forEach(function(listItem){
 								listItem.shows.forEach(function(show){
@@ -45,12 +44,13 @@ angular.module('watchlist.directives')
 
 					//adds show to list's shows
 					listingsFactory.addShowToList(show, list);
+										//
+					// usersFactory.getCurrentUser().then(function(user){
+					// 	$scope.currentUser = user.data;
+					// })
+					var $httpDefaultCache = $cacheFactory.get('$http');  
 					
-					usersFactory.getCurrentUser().then(function(user){
-					
-						$scope.currentUser = user.data;
-					})
-					
+					$httpDefaultCache.remove('/api/users/' + $scope.currentUser.id);
 				};
 				
 				//remove show from list
@@ -64,11 +64,14 @@ angular.module('watchlist.directives')
 							}
 						}.bind(listItem));
 					});
-
+					var $httpDefaultCache = $cacheFactory.get('$http');  
+					
+					$httpDefaultCache.remove('/api/users/' + $scope.currentUser.id);
+					
 					$scope.currentList = null;
 				};
 				
 			}
 		};
 		
-	});
+	}]);
