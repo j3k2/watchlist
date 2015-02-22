@@ -4,7 +4,7 @@ angular.module('watchlist.services')
 
 		return {
 			getUser: function(userId){
-				return $http.get('/api/users/' + userId);
+				return $http.get('/api/users/' + userId, { cache: true });
 			},
 		
 			getCurrentUser: function(){			//
@@ -12,7 +12,7 @@ angular.module('watchlist.services')
 				// })
 			
 					if($window.currentUser){
-						return $http.get('/api/users/' + $window.currentUser.id);
+						return $http.get('/api/users/' + $window.currentUser.id, { cache: true });
 					} // else {
 						// return {
 // 							id: 1,
