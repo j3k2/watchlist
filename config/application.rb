@@ -9,6 +9,9 @@ Bundler.require(*Rails.groups)
 module Watchlist
   class Application < Rails::Application
     config.assets.initialize_on_precompile = false
+    config.assets.paths << Rails.root.join("vendor","assets","bower_components")
+    config.assets.paths << Rails.root.join("vendor","assets","bower_components","bootstrap-sass-official","assets","fonts"
+    config.assets.precompile << %r(.*.(?:eot|svg|ttf|woff)$)
     
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
