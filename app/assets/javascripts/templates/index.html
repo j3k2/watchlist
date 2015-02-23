@@ -3,7 +3,7 @@
 <br>
 <div ng-repeat="show in shows" class="show-item">
 		<a href="/#series/{{show.id}}">
-			<img src="{{show.imgUrl}}" class="thumbnail"></img>
+			<img data-ng-src="{{show.imgUrl}}" class="thumbnail"></img>
 		</a>
 		<a href="/#series/{{show.id}}">
 			{{show.title}}</a>
