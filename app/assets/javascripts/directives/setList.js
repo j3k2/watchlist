@@ -44,10 +44,7 @@ angular.module('watchlist.directives').directive('setList', ['$rootScope', '$cac
 
 					//adds show to list's shows
 					listingsFactory.addShowToList(show, list);
-										//
-					// usersFactory.getCurrentUser().then(function(user){
-					// 	$scope.currentUser = user.data;
-					// })
+								
 					var $httpDefaultCache = $cacheFactory.get('$http');  
 					
 					$httpDefaultCache.remove('/api/users/' + $scope.currentUser.id);

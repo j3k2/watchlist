@@ -7,18 +7,10 @@ angular.module('watchlist.services')
 				return $http.get('/api/users/' + userId, { cache: true });
 			},
 		
-			getCurrentUser: function(){			//
-				// return Auth.currentUser().then(function(user){
-				// })
-			
-					if($window.currentUser){
+			getCurrentUser: function(){	
+				if($window.currentUser){
 						return $http.get('/api/users/' + $window.currentUser.id, { cache: true });
-					} // else {
-						// return {
-// 							id: 1,
-// 							username: ''
-// 						};
-					// }
+					}
 							 		 			
 			}
 		
