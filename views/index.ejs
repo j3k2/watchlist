@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include _header.ejs %>
+  </head>
+<body ng-app="watchlist">
+  <%- include _navbar.ejs %>
+	<div class="container-fluid">
+    <span us-spinner="{radius:30, width:8, length: 16}"></span>
+
+    <ui-view></ui-view>
+  </div>
+
+  <% if(user){ %>
+    <script type="text/javascript">
+          window.currentUser = {
+              id : '<%= user.id %>'
+          };
+      </script>
+  <% } %>
+
+</body>
+</html>
