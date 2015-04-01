@@ -42,9 +42,9 @@ angular.module('watchlist.directives')
 
 								//$scope.ratingId
 								if($scope.ratingId){
-									ratingsFactory.updateRating($scope.show.id, $scope.currentUser._id, newRating);
+									ratingsFactory.updateRating($scope.show._id, $scope.currentUser._id, newRating);
 								} else {
-									ratingsFactory.createRating($scope.show.id, $scope.currentUser._id, newRating);
+									ratingsFactory.createRating($scope.show._id, $scope.currentUser._id, newRating);
 								}
 							}
 						} else {
