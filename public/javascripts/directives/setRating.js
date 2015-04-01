@@ -13,7 +13,7 @@ angular.module('watchlist.directives')
 						$scope.currentUser = user.data;
 
 
-						ratingsFactory.getRating($scope.show.id, $scope.currentUser._id)
+						ratingsFactory.getRating($scope.show._id, $scope.currentUser._id)
 							.success(function(rating){
 
 								if(rating[0] !== undefined){
