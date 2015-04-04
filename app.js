@@ -56,8 +56,8 @@ app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 app.use('/templates', express.static(__dirname + '/templates'));
 app.use('/', express.static(__dirname + '/public'));
 
-// mongoose.connect(process.env.MONGOLAB_URI);
-mongoose.connect('mongodb://localhost/watch-list');
+mongoose.connect(process.env.MONGOLAB_URI);
+// mongoose.connect('mongodb://localhost/watch-list');
 app.use(session({
     secret: 'pop pop in the attic',
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
