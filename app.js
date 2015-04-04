@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
+var flash = require('connect-flash');
 
 var sass = require('node-sass-middleware');
 
@@ -32,6 +33,9 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(flash());
+
+
 // uncomment after placing your favicon in /public
 app.use(favicon(__dirname + '/public/images/watchlist-logo.ico'));
 app.use(logger('dev'));
@@ -52,8 +56,8 @@ app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 app.use('/templates', express.static(__dirname + '/templates'));
 app.use('/', express.static(__dirname + '/public'));
 
-mongoose.connect(process.env.MONGOLAB_URI);
-// mongoose.connect('mongodb://localhost/watch-list');
+// mongoose.connect(process.env.MONGOLAB_URI);
+mongoose.connect('mongodb://localhost/watch-list');
 app.use(session({
     secret: 'pop pop in the attic',
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
