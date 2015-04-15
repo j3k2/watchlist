@@ -5,13 +5,12 @@ angular.module('watchlist.directives').directive('setList', ['$rootScope', '$cac
 				show: "="
 			},
 			templateUrl:'templates/series/setlist.html',
-			controller: function($scope, usersFactory, seriesFactory, listingsFactory, listsFactory, $window, $cacheFactory, $rootScope){
+			controller: function($scope, usersFactory, listingsFactory, listsFactory, $cacheFactory){
 
 				$scope.initSetList = function(){
 					usersFactory.getCurrentUser().then(function(user){
 
 						$scope.currentUser = user.data;
-						$rootScope.currentUser = user.data;
 						$scope.currentUser.lists.forEach(function(listItem){
 
 								listsFactory.getList(listItem._id).then(function(list){
@@ -30,40 +29,16 @@ angular.module('watchlist.directives').directive('setList', ['$rootScope', '$cac
 
 
 				$scope.setList = function(show, list){
-					debugger
 					$scope.showId = show._id;
-
-					//when a listing is deleted or created, also update clientside version of the user object...
-
-					//delete show from other lists' shows
-					// $scope.currentUser.lists.forEach(function(listItem){
-					// 	listsFactory.getList(listItem._id).then(function(list){
-					// 		console.log(list);
-					// 		list.data.shows.forEach(function(show){
-					//
-					// 			if(show === $scope.showId){
-					// 				listingsFactory.deleteShowFromList(show, list).then(function(){
-					// 					debugger
-					// 				});
-					// 			}
-					// 		}.bind(listItem));
-					// 	});
-					// });
 
 					//delete current listing:
 					if($scope.currentList){
-						listingsFactory.deleteShowFromList(show, $scope.currentList).then(function(){
-						});
-
-
+						listingsFactory.deleteShowFromList(show, $scope.currentList);
 					}
-
-
 
 					//adds show to list's shows
 					listingsFactory.addShowToList(show, list).then(function(listing){
 						$scope.currentList = list;
-
 					});
 
 					var $httpDefaultCache = $cacheFactory.get('$http');
@@ -75,25 +50,14 @@ angular.module('watchlist.directives').directive('setList', ['$rootScope', '$cac
 				$scope.clearList = function(show, list){
 					$scope.showId = show._id;
 
-					// $scope.currentUser.lists.forEach(function(listItem){
-					// 	listsFactory.getList(listItem._id).then(function(list){
-					// 		list.data.shows.forEach(function(show){
-					//
-								// if(show === $scope.showId){
-									listingsFactory.deleteShowFromList(show, list).then(function(){
-										$scope.currentList = null;
+					listingsFactory.deleteShowFromList(show, list).then(function(){
+							$scope.currentList = null;
 
-									});
-					// 			}
-					// 		}.bind(listItem));
-					// 	});
-					// });
-
+					});
 
 					var $httpDefaultCache = $cacheFactory.get('$http');
 
 					$httpDefaultCache.remove('/api/users/' + $scope.currentUser._id);
-
 				};
 
 			}

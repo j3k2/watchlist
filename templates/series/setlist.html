@@ -1,21 +1,21 @@
 <div class="btn-group" dropdown ng-init="initSetList()">
-      <a href="#/user/{{currentUser._id}}/list/{{currentList._id}}" type="button" class="btn btn-primary" ng-show="currentList">{{currentList.category}}</a>
+    <a href="#/user/{{currentUser._id}}/list/{{currentList._id}}" type="button" class="btn btn-primary" ng-show="currentList">{{currentList.category}}</a>
 
-			<div type="button" class="btn btn-primary" ng-hide="currentList">Add to list</div>
+  	<div type="button" class="btn btn-primary" ng-hide="currentList">Add to list</div>
 
-      <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle>
+    <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle>
         <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" role="menu">
+    </button>
+    <ul class="dropdown-menu" role="menu">
         <li ng-repeat="list in currentUser.lists">
-					<a ng-click="setList(show, list)">{{list.category}}</a>
-				</li>
-				<li ng-hide="currentUser">
-					<a href="/login">Log in to use lists</a>
-				</li>
-				<li ng-if="currentList">
-					<hr>
-					<a ng-click="clearList(show, currentList)">Remove from {{currentList.category}}</a>
-				</li>
-      </ul>
-    </div>
+      			<a ng-click="setList(show, list)">{{list.category}}</a>
+    		</li>
+  		<li ng-hide="currentUser">
+      			<a href="/login">Log in to use lists</a>
+    		</li>
+    		<li ng-if="currentList">
+      			<hr>
+      			<a ng-click="clearList(show, currentList)">Remove from {{currentList.category}}</a>
+    		</li>
+    </ul>
+</div>
